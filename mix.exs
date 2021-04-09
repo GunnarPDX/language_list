@@ -10,7 +10,7 @@ defmodule LanguageList.MixProject do
       description: description(),
       package: package(),
       deps: deps(),
-      name: "LanguageList",
+      name: "language_list",
       source_url: "https://github.com/GunnarPDX/language_list"
     ]
   end
@@ -37,7 +37,7 @@ defmodule LanguageList.MixProject do
   defp package() do
     [
       # This option is only needed when you don't want to use the OTP application name
-      name: "LanguageList",
+      name: "language_list",
       # These are the default files included in the package
       files: ~w(lib .formatter.exs mix.exs README* LICENSE*),
       licenses: ["MIT"],
