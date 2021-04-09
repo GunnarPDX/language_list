@@ -27,3 +27,4 @@ language_list-*.tar
 /tmp
 
 .idea
+/lib/.DS_Store
