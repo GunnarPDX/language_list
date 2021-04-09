@@ -40,7 +40,7 @@ defmodule LanguageList.MixProject do
       # This option is only needed when you don't want to use the OTP application name
       name: "LanguageList",
       # These are the default files included in the package
-      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE* license* CHANGELOG* changelog* src),
+      files: ~w(lib .formatter.exs mix.exs README* LICENSE* license*),
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/GunnarPDX/language_list"}
     ]
