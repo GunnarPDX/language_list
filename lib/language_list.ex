@@ -28,7 +28,7 @@ defmodule LanguageList do
   """
 
   def all_data do
-    file_path = Application.app_dir(:language_list, "priv/languages.json") |> IO.inspect
+    file_path = Application.app_dir(:language_list, "priv/languages.json")
 
     with {:ok, file} <- File.read(file_path),
          {:ok, languages} <- Poison.decode(file, keys: :atoms)
