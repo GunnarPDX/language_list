@@ -23,7 +23,7 @@ Requests return a 2-tuple with the standard `:ok` or `:error` status.
 
 #### `all_data`
 
-Returns all language data.
+Returns all language data. `LanguageList.all_data!` can be called to return w/out tuple.
 
 ```elixir
 iex> LanguageList.all_data
@@ -39,7 +39,7 @@ iex> LanguageList.all_data
 
 #### `all_common_data`
 
-Returns all common data.
+Returns all common data. `LanguageList.all_common_data!` can be called to return w/out tuple.
 
 ```elixir
 iex> LanguageList.all_common_data
@@ -56,7 +56,7 @@ iex> LanguageList.all_common_data
 
 #### `languages`
 
-Returns list of all language names.
+Returns list of all language names. `LanguageList.languages!` can be called to return w/out tuple.
 
 ```elixir
 iex> LanguageList.languages
@@ -66,7 +66,7 @@ iex> LanguageList.languages
 
 #### `common_languages`
 
-Returns list of all common languages.
+Returns list of all common languages. `LanguageList.common_languages!` can be called to return w/out tuple.
 
 ```elixir
 iex> LanguageList.common_languages
