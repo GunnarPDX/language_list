@@ -30,6 +30,14 @@ defmodule LanguageList do
     end
   end
 
+  @doc false
+  def all_data! do
+    case all_data do
+      {:ok, results} -> results
+      {:error, err} -> :error
+    end
+  end
+
   @doc """
   Returns all common data.
 
@@ -52,6 +60,14 @@ defmodule LanguageList do
     end
   end
 
+  @doc false
+  def all_common_data! do
+    case all_common_data do
+      {:ok, results} -> results
+      {:error, err} -> :error
+    end
+  end
+
   @doc"""
   Returns list of all language names.
 
@@ -64,6 +80,14 @@ defmodule LanguageList do
     case all_data do
       {:ok, results} -> {:ok, Enum.map(results, fn l -> l.name end)}
       err -> err
+    end
+  end
+
+  @doc false
+  def languages! do
+    case languages do
+      {:ok, results} -> results
+      {:error, err} -> :error
     end
   end
 
@@ -87,6 +111,14 @@ defmodule LanguageList do
 
       err ->
         err
+    end
+  end
+
+  @doc false
+  def common_languages! do
+    case common_languages do
+      {:ok, results} -> results
+      {:error, err} -> :error
     end
   end
 
