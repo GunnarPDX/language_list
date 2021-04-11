@@ -10,7 +10,7 @@ by adding `language_list` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:language_list, "~> 1.0.0"}
+    {:language_list, "~> 1.0.1"}
   ]
 end
 ```
