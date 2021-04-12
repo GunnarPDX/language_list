@@ -34,7 +34,7 @@ defmodule LanguageList do
   def all_data! do
     case all_data do
       {:ok, results} -> results
-      {:error, err} -> :error
+      _ -> nil
     end
   end
 
@@ -64,7 +64,7 @@ defmodule LanguageList do
   def all_common_data! do
     case all_common_data do
       {:ok, results} -> results
-      {:error, err} -> :error
+      _ -> nil
     end
   end
 
@@ -87,7 +87,7 @@ defmodule LanguageList do
   def languages! do
     case languages do
       {:ok, results} -> results
-      {:error, err} -> :error
+      _ -> nil
     end
   end
 
@@ -118,7 +118,7 @@ defmodule LanguageList do
   def common_languages! do
     case common_languages do
       {:ok, results} -> results
-      {:error, err} -> :error
+      _ -> nil
     end
   end
 
@@ -146,6 +146,11 @@ defmodule LanguageList do
   def find(query, :iso_639_3), do: search(query, :iso_639_3)
   def find(_, _), do: {:error, "Invalid key!"}
 
+  def find!(query, :name), do: search!(query, :name)
+  def find!(query, :iso_639_1), do: search!(query, :iso_639_1)
+  def find!(query, :iso_639_3), do: search!(query, :iso_639_3)
+  def find!(_, _), do: nil
+
   defp search(query, key) do
     case all_data do
       {:ok, results} ->
@@ -154,6 +159,17 @@ defmodule LanguageList do
           result -> {:ok, result}
         end
       err -> err
+    end
+  end
+
+  defp search!(query, key) do
+    case all_data do
+      {:ok, results} ->
+        case Enum.find(results, fn l -> l[key] == query end) do
+          nil -> nil
+          result -> result
+        end
+      _ -> nil
     end
   end
 
