@@ -144,4 +144,4 @@ nil
 
 ## TODO:
 
-[ ] add native language names to json file.
+[] add native language names to json file.

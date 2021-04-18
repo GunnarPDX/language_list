@@ -198,7 +198,7 @@
     "iso_639_1": "dz"
   },
   {
-    "name": "Modern Greek (1453-)",
+    "name": "Modern Greek",
     "common": true,
     "iso_639_3": "ell",
     "iso_639_1": "el"
@@ -684,7 +684,7 @@
     "iso_639_1": "ny"
   },
   {
-    "name": "Occitan (post 1500)",
+    "name": "Occitan",
     "common": false,
     "iso_639_3": "oci",
     "iso_639_1": "oc"
