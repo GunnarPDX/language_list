@@ -9,6 +9,8 @@ This package provides simple access to iso language names and codes.
 This package can be installed
 by adding `language_list` to your list of dependencies in `mix.exs`:
 
+Hex: [https://hex.pm/packages/language_list](https://hex.pm/packages/language_list)
+
 ```elixir
 def deps do
   [

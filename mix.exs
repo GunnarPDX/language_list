@@ -31,7 +31,11 @@ defmodule LanguageList.MixProject do
   end
 
   defp description() do
-    "A few sentences (a paragraph) describing the project."
+    """
+    An elixir implementation of the language list ruby gem.
+    This package provides language data in the form of a list, provides filtering capabilities,
+    and allows for searching languages by iso code or name
+    """
   end
 
   defp package() do
