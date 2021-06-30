@@ -26,13 +26,13 @@ defmodule LanguageList do
       do
         {:ok, languages}
       else
-        err -> {:error, "Could not read internal languages.json file!"}
+        _ -> {:error, "Could not read internal languages.json file!"}
     end
   end
 
   @doc false
   def all_data! do
-    case all_data do
+    case all_data() do
       {:ok, results} -> results
       _ -> nil
     end
@@ -54,7 +54,7 @@ defmodule LanguageList do
       }
   """
   def all_common_data do
-    case all_data do
+    case all_data() do
       {:ok, results} -> {:ok, Enum.filter(results, fn l -> l.common end)}
       err -> err
     end
@@ -62,7 +62,7 @@ defmodule LanguageList do
 
   @doc false
   def all_common_data! do
-    case all_common_data do
+    case all_common_data() do
       {:ok, results} -> results
       _ -> nil
     end
@@ -77,7 +77,7 @@ defmodule LanguageList do
       {:ok, ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]}
   """
   def languages do
-    case all_data do
+    case all_data() do
       {:ok, results} -> {:ok, Enum.map(results, fn l -> l.name end)}
       err -> err
     end
@@ -85,7 +85,7 @@ defmodule LanguageList do
 
   @doc false
   def languages! do
-    case languages do
+    case languages() do
       {:ok, results} -> results
       _ -> nil
     end
@@ -100,7 +100,7 @@ defmodule LanguageList do
       {:ok, ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]}
   """
   def common_languages do
-    case all_data do
+    case all_data() do
       {:ok, results} ->
         results =
           results
@@ -116,7 +116,7 @@ defmodule LanguageList do
 
   @doc false
   def common_languages! do
-    case common_languages do
+    case common_languages() do
       {:ok, results} -> results
       _ -> nil
     end
@@ -152,7 +152,7 @@ defmodule LanguageList do
   def find!(_, _), do: nil
 
   defp search(query, key) do
-    case all_data do
+    case all_data() do
       {:ok, results} ->
         case Enum.find(results, fn l -> l[key] == query end) do
           nil -> {:error, "No matches found"}
@@ -163,7 +163,7 @@ defmodule LanguageList do
   end
 
   defp search!(query, key) do
-    case all_data do
+    case all_data() do
       {:ok, results} ->
         case Enum.find(results, fn l -> l[key] == query end) do
           nil -> nil
