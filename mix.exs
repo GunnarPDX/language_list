@@ -4,7 +4,7 @@ defmodule LanguageList.MixProject do
   def project do
     [
       app: :language_list,
-      version: "1.0.3",
+      version: "1.0.4",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       description: description(),
