@@ -9,14 +9,11 @@ defmodule LanguageList do
   ## Examples
 
       iex> LanguageList.all_data
-      {
-        :ok,
-        [
-          %{common: false, iso_639_1: "az", iso_639_3: "aze", name: "Azerbaijani"},
-          %{common: false, iso_639_1: "ba", iso_639_3: "bak", name: "Bashkir"},
-          ...
-        ]
-      }
+      [
+        %{common: false, iso_639_1: "az", iso_639_3: "aze", name: "Azerbaijani"},
+        %{common: false, iso_639_1: "ba", iso_639_3: "bak", name: "Bashkir"},
+        ...
+      ]
   """
   def all_data do
     file_path = Application.app_dir(:language_list, "priv/languages.json")
@@ -39,14 +36,11 @@ defmodule LanguageList do
   ## Examples
 
       iex> LanguageList.all_common_data
-      {
-        :ok,
-        [
-          %{common: true, iso_639_1: "af", iso_639_3: "afr", name: "Afrikaans"},
-          %{common: true, iso_639_1: "ar", iso_639_3: "ara", name: "Arabic"},
-          ...
-        ]
-      }
+      [
+        %{common: true, iso_639_1: "af", iso_639_3: "afr", name: "Afrikaans"},
+        %{common: true, iso_639_1: "ar", iso_639_3: "ara", name: "Arabic"},
+        ...
+      ]
   """
   def all_common_data do
     data = all_data()
@@ -63,7 +57,7 @@ defmodule LanguageList do
   ## Examples
 
       iex> LanguageList.languages
-      {:ok, ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]}
+      ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]
   """
   def languages do
     data = all_data()
@@ -80,7 +74,7 @@ defmodule LanguageList do
   ## Examples
 
       iex> LanguageList.common_languages
-      {:ok, ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]}
+      ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]
   """
   def common_languages do
     data = all_data()

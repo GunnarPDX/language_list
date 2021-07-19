@@ -23,7 +23,9 @@ Documentation can be found at [https://hexdocs.pm/language_list](https://hexdocs
 
 ## Usage:
 
-Standard requests return a 2-tuple with the standard `:ok` or `:error` status.
+Standard requests will return a list of maps or strings.
+
+Search requests return the data in a 2-tuple with the standard `:ok` or `:error` status.
 
 Calls made to functions with `!` return only the result or nil.
 
@@ -34,24 +36,12 @@ Returns all language data.
 ```elixir
 iex> LanguageList.all_data
 
-{
-  :ok,
-  [
-    %{common: false, iso_639_1: "az", iso_639_3: "aze", name: "Azerbaijani"},
-    %{common: false, iso_639_1: "ba", iso_639_3: "bak", name: "Bashkir"},
-    ...
-  ]
-}
-
-iex> LanguageList.all_data!
-
 [
   %{common: false, iso_639_1: "az", iso_639_3: "aze", name: "Azerbaijani"},
   %{common: false, iso_639_1: "ba", iso_639_3: "bak", name: "Bashkir"},
   ...
 ]
 ```
-`LanguageList.all_data!` can be called to return w/out tuple.
 
 #### `all_common_data`
 
@@ -60,24 +50,12 @@ Returns all common data.
 ```elixir
 iex> LanguageList.all_common_data
 
-{
-  :ok,
-  [
-    %{common: true, iso_639_1: "af", iso_639_3: "afr", name: "Afrikaans"},
-    %{common: true, iso_639_1: "ar", iso_639_3: "ara", name: "Arabic"},
-    ...
-  ]
-}
-
-iex> LanguageList.all_common_data!
-
 [
   %{common: true, iso_639_1: "af", iso_639_3: "afr", name: "Afrikaans"},
   %{common: true, iso_639_1: "ar", iso_639_3: "ara", name: "Arabic"},
   ...
 ]
 ```
-`LanguageList.all_common_data!` can be called to return w/out tuple.
 
 #### `languages`
 
@@ -86,13 +64,9 @@ Returns list of all language names.
 ```elixir
 iex> LanguageList.languages
 
-{:ok, ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]}
-
-iex> LanguageList.languages!
-
 ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]
+
 ```
-`LanguageList.languages!` can be called to return w/out tuple.
 
 #### `common_languages`
 
@@ -101,13 +75,8 @@ Returns list of all common languages.
 ```elixir
 iex> LanguageList.common_languages
 
-{:ok, ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]}
-
-iex> LanguageList.common_languages!
-
 ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]
 ```
-`LanguageList.common_languages!` can be called to return w/out tuple.
 
 #### `find(query, key)`
 
