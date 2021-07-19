@@ -14,7 +14,7 @@ Hex: [https://hex.pm/packages/language_list](https://hex.pm/packages/language_li
 ```elixir
 def deps do
   [
-    {:language_list, "~> 1.0.4"}
+    {:language_list, "~> 2.0.0"}
   ]
 end
 ```
