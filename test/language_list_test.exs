@@ -3,7 +3,7 @@ defmodule LanguageListTest do
   # doctest LanguageList
 
   test "get all data" do
-    assert {:ok, values} = LanguageList.all_data
+    assert values = LanguageList.all_data
     assert Enum.count(values) > 0
   end
 
@@ -12,7 +12,7 @@ defmodule LanguageListTest do
   end
 
   test "test get all common data" do
-    assert {:ok, values} = LanguageList.all_common_data
+    assert values = LanguageList.all_common_data
     assert Enum.count(values) > 0
   end
 
@@ -21,12 +21,12 @@ defmodule LanguageListTest do
   end
 
   test "make sure all_common_data returns only common data" do
-    {:ok, values} = LanguageList.all_common_data
+    values = LanguageList.all_common_data
     assert Enum.find(values, fn x -> x.common != true end) == nil
   end
 
   test "get language names" do
-    assert {:ok, values} = LanguageList.languages
+    assert values = LanguageList.languages
     assert Enum.count(values) > 0
   end
 
@@ -35,7 +35,7 @@ defmodule LanguageListTest do
   end
 
   test "get common language names" do
-    assert {:ok, values} = LanguageList.common_languages
+    assert values = LanguageList.common_languages
     assert Enum.count(values) > 0
   end
 
@@ -50,6 +50,11 @@ defmodule LanguageListTest do
     assert Enum.find(values, fn x -> x == "Guarani" end) == nil
     assert Enum.find(values, fn x -> x == "Fulah" end) == nil
     assert Enum.find(values, fn x -> x == "Ewe" end) == nil
+
+    assert Enum.find(values, fn x -> x == "English" end) != nil
+    assert Enum.find(values, fn x -> x == "Spanish" end) != nil
+    assert Enum.find(values, fn x -> x == "French" end) != nil
+    assert Enum.find(values, fn x -> x == "German" end) != nil
   end
 
   test "find by language name" do

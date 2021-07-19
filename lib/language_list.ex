@@ -24,19 +24,14 @@ defmodule LanguageList do
     with {:ok, file} <- File.read(file_path),
          {:ok, languages} <- Poison.decode(file, keys: :atoms)
       do
-        {:ok, languages}
+        languages
       else
-        _ -> {:error, "Could not read internal languages.json file!"}
+        _ -> raise "Could not read internal languages.json file!"
     end
   end
 
   @doc false
-  def all_data! do
-    case all_data() do
-      {:ok, results} -> results
-      _ -> nil
-    end
-  end
+  def all_data!, do: all_data()
 
   @doc """
   Returns all common data.
@@ -54,19 +49,13 @@ defmodule LanguageList do
       }
   """
   def all_common_data do
-    case all_data() do
-      {:ok, results} -> {:ok, Enum.filter(results, fn l -> l.common end)}
-      err -> err
-    end
+    data = all_data()
+
+    Enum.filter(data, fn l -> l.common end)
   end
 
   @doc false
-  def all_common_data! do
-    case all_common_data() do
-      {:ok, results} -> results
-      _ -> nil
-    end
-  end
+  def all_common_data!, do: all_common_data()
 
   @doc"""
   Returns list of all language names.
@@ -77,19 +66,13 @@ defmodule LanguageList do
       {:ok, ["Afar", "Abkhazian", "Afrikaans", "Akan", "Amharic", "Arabic", ...]}
   """
   def languages do
-    case all_data() do
-      {:ok, results} -> {:ok, Enum.map(results, fn l -> l.name end)}
-      err -> err
-    end
+    data = all_data()
+
+    Enum.map(data, fn l -> l.name end)
   end
 
   @doc false
-  def languages! do
-    case languages() do
-      {:ok, results} -> results
-      _ -> nil
-    end
-  end
+  def languages!, do: languages()
 
   @doc """
   Returns list of all common languages.
@@ -100,27 +83,15 @@ defmodule LanguageList do
       {:ok, ["Afrikaans", "Arabic", "Bengali", "Tibetan", "Bulgarian", ...]}
   """
   def common_languages do
-    case all_data() do
-      {:ok, results} ->
-        results =
-          results
-          |> Enum.filter(fn l -> l.common end)
-          |> Enum.map(fn l -> l.name end)
+    data = all_data()
 
-        {:ok, results}
-
-      err ->
-        err
-    end
+    data
+    |> Enum.filter(fn l -> l.common end)
+    |> Enum.map(fn l -> l.name end)
   end
 
   @doc false
-  def common_languages! do
-    case common_languages() do
-      {:ok, results} -> results
-      _ -> nil
-    end
-  end
+  def common_languages!, do: common_languages()
 
   @doc """
   Allows for query of language data by attribute.
@@ -151,25 +122,19 @@ defmodule LanguageList do
   def find!(query, :iso_639_3), do: search!(query, :iso_639_3)
   def find!(_, _), do: nil
 
-  defp search(query, key) do
-    case all_data() do
-      {:ok, results} ->
-        case Enum.find(results, fn l -> l[key] == query end) do
-          nil -> {:error, "No matches found"}
-          result -> {:ok, result}
-        end
-      err -> err
-    end
+  defp search!(query, key) do
+    data = all_data()
+
+    Enum.find(data, fn l -> l[key] == query end)
   end
 
-  defp search!(query, key) do
-    case all_data() do
-      {:ok, results} ->
-        case Enum.find(results, fn l -> l[key] == query end) do
-          nil -> nil
-          result -> result
-        end
-      _ -> nil
+  defp search(query, key) do
+    case search!(query, key) do
+      nil ->
+        {:error, "No matches found"}
+
+      result ->
+        {:ok, result}
     end
   end
 
